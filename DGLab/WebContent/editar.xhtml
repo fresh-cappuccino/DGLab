@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Index</title>
+	<link rel="icon" href="img/icone_editar.png"/>
+
+	<style>
+		#tabViewEditarAluno::after {
+			background: url("img/escola_wallpaper_editar.jpg");
+			background-attachment: scroll;
+			background-origin: border-box;
+			background-repeat: no-repeat;
+			background-clip: border-box;
+			background-size: 100%;
+			content: "";
+			opacity: 0.5;
+			top: 2px;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			position: absolute;
+			z-index: -1;
+			background-position: 100% 100%;
+		}
+		
+		div:nth-child(2){
+			background: url("img/tabView_wallpaper.png");
+			opacity: 1;
+		}
+	</style>
+</h:head>
+
+<h:body>
+	<div id="tabViewEditarAluno" align="center">
+		<p:tabView id="abaEdicao">
+			<p:tab title="EDITAR ALUNO">
+				<h:form id="formEdicao">
+					<p:messages showDetail="true" showSummary="true" globalOnly="false" />
+					
+					<h:panelGrid columns="4" cellpadding="7">
+						<p:outputLabel for="editNome" value="Nome: *" />
+						<p:inputText id="editNome" value="#{pessoaMB.nome}"/>
+
+						<p:outputLabel for="editCpf" value="CPF: *" />
+						<p:inputMask id="editCpf" value="#{pessoaMB.cpf}"
+							mask="999.999.999-99"/>
+
+						<p:outputLabel for="editEmail" value="E-mail: *" />
+						<p:inputText id="editEmail" value="#{pessoaMB.email}"/>
+
+						<p:outputLabel for="editDataNascimento"
+							value="Data de Nascimento: *" />
+						<p:inputMask id="editDataNascimento" value="#{pessoaMB.dataNascimento}"
+							mask="99/99/9999" placeholder="DD/MM/AAAA"/>
+
+						<p:outputLabel for="editTelefone" value="Telefone fixo:" />
+						<p:inputMask id="editTelefone" value="#{pessoaMB.telefone}"
+							mask="(99) 9999-9999" />
+
+						<p:outputLabel for="editTelefone2" value="Celular:" />
+						<p:inputMask id="editTelefone2" value="#{pessoaMB.telefone2}"
+							mask="(99) 99999-9999" />
+
+						<p:outputLabel for="selectOneEstadoEditar" value="Estado:" />
+						<p:selectOneMenu id="selectOneEstadoEditar"
+							value="#{pessoaMB.estado}" required="true">
+							<f:selectItems value="#{estadosCidades.estados}" />
+							<p:ajax process="@this" event="change"
+								update=":abaEdicao:formEdicao:selectOneCidadeEditar" />
+						</p:selectOneMenu>
+						
+						<p:outputLabel for="selectOneCidadeEditar" value="Cidade:" />
+						<p:selectOneMenu id="selectOneCidadeEditar"
+							value="#{pessoaMB.cidade}" required="true">
+							<f:selectItems value="#{estadosCidades.cidades}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel for="editRua" value="Rua: *" />
+						<p:inputText id="editRua" value="#{pessoaMB.rua}"/>
+
+						<p:outputLabel for="editNumero" value="Número: *" />
+						<p:inputText id="editNumero" value="#{pessoaMB.numero}"/>
+
+						<p:outputLabel for="editComplemento" value="Complemento:" />
+						<p:inputText id="editComplemento"
+							value="#{pessoaMB.complemento}" />
+
+						<p:outputLabel for="editCep" value="CEP: *" />
+						<p:inputMask id="editCep" value="#{pessoaMB.cep}"
+							mask="99999-999"/>
+
+						<p:outputLabel for="editBairro" value="Bairro: *" />
+						<p:inputText id="editBairro" value="#{pessoaMB.bairro}"/>
+					</h:panelGrid>
+					<br />
+					<p:commandButton id="btnConfirmaEdicao" icon="ui-icon-note"
+						binding="#{pessoaMB.cmdBtnEditar}" value="EDITAR"
+						action="#{pessoaMB.editarPessoa}" update="pagina"/>
+				</h:form>
+				<br />
+				<p:commandButton id="btnCancelaEdicao" value="VOLTAR" action="#{pessoaMB.naoRealizarAcao}"
+					update="pagina" icon="ui-icon-arrowreturnthick-1-w"/>
+			</p:tab>
+		</p:tabView>
+	</div>
+</h:body>
+</html>

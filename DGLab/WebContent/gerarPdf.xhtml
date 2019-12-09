@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Index</title>
+	<link rel="icon" href="#{pessoaMB.icone}"/>
+	
+	<style>
+		#pagina {
+			
+		}
+		
+		div:nth-child(2){
+			background: url("img/tabView_wallpaper.png");
+			opacity: 1;
+		}
+	</style>
+</h:head>
+
+<h:body>
+	<div align="center">
+		<p:tabView>
+			<p:tab title="LISTAGEM DE ALUNOS">
+				<h:form>
+					<p:selectOneMenu id="selectTypePdf"
+						value="#{pdfControlerView.typePDF}" required="true">
+						<f:selectItems value="#{pdfControlerView.typesPDF}"/>
+					</p:selectOneMenu>
+					
+					<p:spacer width="12"/>
+					
+					<p:commandButton value="GERAR PDF" binding="#{pessoaMB.cmdBtnGerarPdf}"
+						action="#{pessoaMB.entrarPdfView}" icon="ui-icon-document-b" ajax="false"/>
+				</h:form>
+				
+				<br/>
+				
+				<h:form>
+					<p:commandButton value="VOLTAR AO LAYOUT" binding="#{pessoaMB.cmdBtnEntrarLayout}"
+						action="#{pessoaMB.entrarLayout}" update="pagina" ajax="false"/>
+				</h:form>
+			</p:tab>
+		</p:tabView>
+		
+		<br/>
+		
+		<ui:include src="#{pessoaMB.pdf}"/>
+	</div>
+</h:body>
+</html>

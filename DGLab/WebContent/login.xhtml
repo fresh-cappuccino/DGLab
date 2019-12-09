@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Index</title>
+	<link rel="icon" href="img/icone_login.png"/>
+	
+	<style>
+		div:nth-child(2) {
+			background: url("img/tabView_wallpaper.png");
+			opacity: 1;
+		}
+		#tabViewTestLogin::after{
+			background: url("img/tabView_login_wallpaper.png");
+			background-attachment: scroll;
+			background-origin: border-box;
+			background-repeat: no-repeat;
+			background-clip: border-box;
+			background-size: 100%;
+			content: "";
+			opacity: 0.4;
+			top: 2px;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			position: absolute;
+			z-index: -1;
+			background-position: 100% 100%;
+		}
+	</style>
+</h:head>
+
+<h:body>
+	<div id="tabViewTestLogin" align="center">
+		<br/>
+		<p:tabView>
+			<p:tab title="LOGIN">
+				<h:form>
+					<p:messages>
+						<p:autoUpdate/>
+					</p:messages>
+					
+					<p:panelGrid columns="3">
+						<h:graphicImage value="img/user_icon.png" height="1%"/>
+						<p:outputLabel for="loginUser" value="Usuário:"/>
+						<p:inputText id="loginUser" value="#{pessoaMB.usuario}"/>
+						
+						<h:graphicImage value="img/password_icon.png" height="5%"/>
+						<p:outputLabel for="loginPass" value="Senha:"/>
+						<h:inputSecret id="loginPass" value="#{pessoaMB.senha}"/>
+					</p:panelGrid>
+					<br/>
+					<p:commandButton id="cmdBtnLogin" value="LOGIN" update="pagina" icon="ui-icon-power"
+						binding="#{pessoaMB.cmdBtnLogin}" action="#{pessoaMB.loginMB()}" ajax="false"/>
+					
+					<p:spacer width="24"/>
+					
+					<p:commandButton id="cmdBtnCadastro" value="CADASTRO" update="pagina" icon="ui-icon-plus"
+						binding="#{pessoaMB.cmdBtnEntrarCadastro}" action="#{pessoaMB.entrarCadastro}" ajax="false"/>
+				</h:form>
+			</p:tab>
+		</p:tabView>
+	</div>
+</h:body>
+</html>

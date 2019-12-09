@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Test Layout</title>
+	<link rel="icon" href="img/icone_chapeuzinho.png"/>
+	
+	<style type="text/css">
+		.ui-datalist .ui-datalist-content {
+			border: 0 none
+		}
+		
+		.ui-datalist ul {
+			padding: 0px 10px 0 20px;
+			margin: 5px 0;
+		}
+		
+		.value {
+			font-weight: bold;
+		}
+		
+		.ui-autocomplete-itemtip {
+			-moz-box-sizing: content-box;
+			-webkit-box-sizing: content-box;
+			box-sizing: content-box;
+		}
+		
+		/*demo*/
+		.ui-dataview-list .ui-dataview-row {
+			border-bottom: 1px solid #A8A8A8;
+			padding: 25px 10px;
+			/* with the exported variables from Nova and Luna Themes*/
+			border-bottom-color: var(- -input-border-color, #A8A8A8);
+		}
+		
+		.logo {
+			width: 5%;
+		}
+		
+		.detail {
+			width: 85%;
+			padding-left: 25px;
+		}
+		
+		.ui-datatable .ui-datatable-header {
+			text-align: right !important;
+		}
+		
+		.ui-button-text-only .ui-button-text {
+			padding: 0.3em 0.4em;
+		}
+		
+		.ui-selectcheckboxmenu-panel .ui-selectcheckboxmenu-header .ui-chkbox {
+			visibility: hidden;
+		}
+		
+		.ui-filter-column .ui-column-customfilter .custom-filter {
+			width: 100%;
+			box-sizing: border-box;
+		}
+		
+		.year-spinner input {
+			width: 100%;
+			box-sizing: border-box;
+		}
+		
+		#tabViewTestLayout::after {
+			background: url("img/layout.jpg");
+			background-attachment: scroll;
+			background-origin: border-box;
+			background-repeat: no-repeat;
+			background-clip: border-box;
+			background-size: 100%;
+			content: "";
+			opacity: 0.4;
+			top: 2px;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			position: absolute;
+			z-index: -1;
+			background-position: 100% 100%;
+		}
+		
+		div:nth-child(2) {
+			background: url("img/tabView_wallpaper.png");
+			opacity: 1;
+		}
+		#div-btn-login {
+			position: relative;
+			float: right;
+			margin-right: 150px;
+		}
+		#div-logo-dglab {
+			position: absolute;
+			float: left;
+			margin-top: 0;
+		}
+		#id-user {
+			position: absolute;
+			float: left;
+		}
+		#em-user {
+			position: absolute;
+			float: right;
+		}
+	</style>
+</h:head>
+
+<h:body>
+	<div id="tabViewTestLayout" align="center">
+		<p:tabView id = "abaLayout">
+			<p:tab title="ALUNOS">
+				<f:verbatim><hr/></f:verbatim>
+				<div id="div-logo-dglab">
+					<img src="img/dglab_logo.png" alt="logo DGLab" style="border-radius: 7px;"/>
+				</div>
+				<br/>
+				<h:form id="formHeaderAbaLayout" style="width: 100%;">
+					<p:outputLabel style="font-size: 25px; color: #FFF; border-radius: 7px; background: linear-gradient(to right, #4682B4, #008080); padding: 12px; opacity: 0.8;" value="#{pessoaMB.getWelcome()}"/>
+					<div id="div-btn-login">
+						<p:commandButton id="botaoLogin" class="btnLog" action="#{pessoaMB.realizarLogin()}"
+							style="float: right; position: absolute; margin-top: 0; padding: 7px;"
+							icon="#{pessoaMB.iconLogin}" binding="#{pessoaMB.cmdBtnLog}"
+							value="#{pessoaMB.botaoLog()}" update="pagina" ajax="false"/>
+					</div>
+				</h:form>
+				
+				<br/><br/>
+				
+				<f:verbatim><hr/></f:verbatim>
+				
+				<br/>
+				
+				<h:form>
+					<h:panelGrid columns="1" style="align-content: center;">
+						<hr/>
+						
+						<p:outputLabel style="font-size: 21px; color: #FFF; border-radius: 7px; background: linear-gradient(to right, #15400E, #14540D); padding: 7px; opacity: 0.5;" value="ID: AAA000"/>
+						
+						<hr/>
+						
+						<p:outputLabel style="font-size: 21px; color: #FFF; border-radius: 7px; background: linear-gradient(to right, #15400E, #14540D); padding: 7px; opacity: 0.5;" value="Leonardo de Andrade Ferreira"/>
+						
+						<hr/>
+						
+						<p:outputLabel style="font-size: 21px; color: #FFF; border-radius: 7px; background: linear-gradient(to right, #15400E, #14540D); padding: 7px; opacity: 0.5;" value="od.leonardo01@gmail.com"/>
+						
+						<hr/>
+						
+						<br/>
+						
+						<p:commandButton value="ACESSAR EXAME" style="padding: 7px;" binding="#{pessoaMB.cmdBtnEntrarPdf}"
+						action="#{pessoaMB.entrarPdf()}" icon="ui-icon-document-b" ajax="false"/>
+					</h:panelGrid>
+					
+					<br/>
+					
+					<br/><br/>
+				</h:form>
+			</p:tab>
+		</p:tabView>
+	</div>
+</h:body>
+</html>
